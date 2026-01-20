@@ -25,6 +25,18 @@ public class SwitchTest {
 		default:
 			System.out.println("6번");
 		}
+		
+		switch (num) {
+		case 1:
+		case 3:
+		case 5:
+			System.out.println("홀수");
+			break;
+		case 2:
+		case 4:
+		case 6:
+			System.out.println("짝수");
+		}
 	}
 
 }
