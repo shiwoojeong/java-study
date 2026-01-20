@@ -66,15 +66,30 @@ public class SwitchTest {
 		}
 		System.out.println(month + "'s last day is " + lastDate);
 
-		lastDate = switch (month) {
+		lastDate = switch (month) { //case expression
 		case "January", "March", "May", "July", "August", "October", "December" -> 31;
 		case "February" -> !isLeapYear ? 28 : 29;
 		case "April", "June", "September", "November" -> 30;
 		default -> throw new IllegalArgumentException("Invalid month: " + month);
 		};
 		System.out.println(month + "'s last day is " + lastDate);
+		
+		int year = 2024;
+		month = "February";
+		lastDate = switch (month) {
+			case "January", "March", "May", "July", "August", "October", "December" -> 31;
+			case "February" -> {
+				boolean isLeap = (year % 4 == 0) == (year % 100 == 0) == (year % 400 == 0);
+				yield !isLeap ? 28 : 29;
+			}
+			case "April", "June", "September", "November" -> 30;
+			default -> throw new IllegalArgumentException("Invalid month: " + month);
+		};
+		System.out.println(month + "'s last day is " + lastDate);
 	}
+	
 
+	
 }
 
 //break문 주의 없으면 다음 case로 넘어감
