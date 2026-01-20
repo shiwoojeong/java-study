@@ -37,6 +37,34 @@ public class SwitchTest {
 		case 6:
 			System.out.println("짝수");
 		}
+		
+		int lastDate;
+		boolean isLeapYear = true;
+		String month = "March";
+		
+		switch (month) {
+		case "January":
+		case "March":
+		case "May":
+		case "July":
+		case "August":
+		case "October":
+		case "December":
+			lastDate = 31;
+			break;
+		case "February":
+			lastDate = !isLeapYear ? 28 : 29;
+			break;
+		case "April":
+		case "June":
+		case "September":
+		case "November":
+			lastDate = 30;
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid month: " + month);
+		}
+		System.out.println(month + "'s last day is " + lastDate);
 	}
 
 }
