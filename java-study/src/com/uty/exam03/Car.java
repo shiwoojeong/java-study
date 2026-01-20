@@ -4,6 +4,7 @@ public class Car {
 	
 	String model = "new car";
 	String color = "white";
+	public Car() {};//기본 생성자
 	
 	public Car(String inputModel, String inputColor) { // 생성자
 		model = inputModel;
