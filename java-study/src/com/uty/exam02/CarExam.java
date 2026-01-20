@@ -8,3 +8,7 @@ public class CarExam {
 		
 	}
 }
+
+
+//객체는 heap영역에 만든다.
+//myCar는 스택 영역에서 객체를 참조
