@@ -13,7 +13,8 @@ public class Car03 {
 	}
 
 	public Car03(String model, String color) {
-		this.model = model;
+//		this.model = model;
+		this(model); //자신이 가진 생성자로 이동해서 수행함
 		this.color = color;
 	}
 
