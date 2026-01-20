@@ -10,11 +10,11 @@ public class Car {
 		color = inputColor;
 	}
 	
-	public Car(String model, String color) {
-		super();
-		this.model = model;
-		this.color = color;
-	}
+//	public Car(String model, String color) {
+//		super();
+//		this.model = model;
+//		this.color = color;
+//	}
 	
 	void drive() {
 		System.out.println(model + "(" + color + ")" + " driving~~~~~");
