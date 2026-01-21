@@ -1,0 +1,14 @@
+package com.uty.exam05.step03;
+
+public class CarExam {
+	public static void main(String[] args) {
+		Car car = new Car("현대");
+		Convertible mustang = new Convertible("포드", "yellow");
+		Truck truck = new Truck("현대");
+		
+		car.drive();
+		mustang.drive();
+		truck.drive();
+		
+	}
+}
