@@ -9,3 +9,6 @@ public class RobotExam {
 		System.out.println("Number of Robots: " + Robot.getPopulation());
 	}
 }
+
+//Java applicaton 기동 순서
+//Class Loader 기동 -> main 쓰레드 기동
