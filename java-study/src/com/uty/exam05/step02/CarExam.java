@@ -12,5 +12,6 @@ public class CarExam {
 		
 		mustang.drive();
 		truck.drive();
+		
 	}
 }
