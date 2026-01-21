@@ -20,6 +20,16 @@ public class CarExam {
 		Truck mytruck = (Truck)truck;
 		myCar.openRoof();
 		mytruck.connectTrailler();
+		
+//		Truck t = (Truck)mustang;
+//		t.disconnectTrailler();
+		
+		//강제 캐스팅을 할때는 if문(instance 연산자)을 사용해 에러 방지
+		if(mustang instanceof Truck) {
+			Truck t = (Truck)mustang;
+			t.disconnectTrailler();
+		}
+		
 	}
 }
 //부모 타입의 래퍼런스 변수가 자식의 래퍼런스 변수를 가질 경우 자식의 매소드는 사용 불가능 하지만 오버라이드된 매소드는 사용 가능
