@@ -6,7 +6,8 @@ public class Desktop {
 	private static String video = "RTX 3060 8GB";
 	private static String feature;
 	
-	static {	//static block
+	//static block
+	static {	
 		feature = cpu + "/" + memory + "/" + video;
 	}
 
