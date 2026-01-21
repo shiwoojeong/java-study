@@ -15,6 +15,11 @@ public class CarExam {
 		
 		mustang.drive();
 		truck.drive();
+		
+		Convertible myCar = (Convertible)mustang;
+		Truck mytruck = (Truck)truck;
+		myCar.openRoof();
+		mytruck.connectTrailler();
 	}
 }
 //부모 타입의 래퍼런스 변수가 자식의 래퍼런스 변수를 가질 경우 자식의 매소드는 사용 불가능 하지만 오버라이드된 매소드는 사용 가능
