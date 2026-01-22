@@ -6,7 +6,7 @@ public class AnimalExam {
 //		Animal animal = new Animal();
 		Dog puppy = new Dog();
 		Bird sparrow = new Bird();
-
+		
 		puppy.sound();
 		sparrow.song();
 	}
