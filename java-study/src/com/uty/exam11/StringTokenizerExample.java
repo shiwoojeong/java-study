@@ -4,8 +4,8 @@ import java.util.StringTokenizer;
 
 public class StringTokenizerExample {
 	public static void main(String[] args) {
-		String data1 = "홍길동&이수홍,박연수";
-		String[] arr = data1.split("&|,");
+		String data1 = "홍길동<>이수홍<>박연수";
+		String[] arr = data1.split("<>");
 		for (String token : arr) {
 			System.out.println(token);
 		}

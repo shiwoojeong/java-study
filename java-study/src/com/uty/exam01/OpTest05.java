@@ -15,7 +15,7 @@ public class OpTest05 {
 		System.out.println("38: " + toBinaryString(38));
 		System.out.println("27: " + toBinaryString(27));
 		System.out.println("38 ^ 27: " + (38 ^ 27));
-		System.out.println(toBinaryString((38 ^ 27)));
+		System.out.println(toBinaryString((46 ^ 27)));
 		System.out.println("------------------------------------");
 
 		System.out.println("~38: " + ~38);
