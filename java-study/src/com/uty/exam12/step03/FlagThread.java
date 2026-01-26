@@ -1,6 +1,6 @@
-package com.uty.exam12.step02;
+package com.uty.exam12.step03;
 
-public class FlagTask implements Runnable {
+public class FlagThread extends Thread{
 
 	@Override
 	public void run() {
@@ -14,5 +14,7 @@ public class FlagTask implements Runnable {
 			}
 		}
 	}
+	
+	
 
 }
