@@ -1,6 +1,6 @@
 package com.uty.exam12.step03;
 
-public class FlagThread extends Thread{
+public class FlagThread extends Thread {
 
 	@Override
 	public void run() {
@@ -14,8 +14,5 @@ public class FlagThread extends Thread{
 			}
 		}
 	}
-	
-	
-	
 
 }
