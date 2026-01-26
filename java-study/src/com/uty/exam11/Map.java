@@ -18,11 +18,11 @@ public class Map {
 	public static int[][] solve(int[] arr1, int[] arr2){
 		int map[][] = new int[6][6];
 		for(int i=0;i<arr1.length;i++) {
-			String s1= toBinaryString(arr1[i]);
-			String s2= toBinaryString(arr2[i]);
-			System.out.println(s1);
-			System.out.println(s2);
-			String s= toBinaryString(arr1[i]^arr2[i]);
+//			String s1= toBinaryString(arr1[i]);
+//			String s2= toBinaryString(arr2[i]);
+//			System.out.println(s1);
+//			System.out.println(s2);
+			String s= toBinaryString(arr1[i]|arr2[i]);
 			for(int j=0;j<6;j++) {
 				int n = s.charAt(j) - '0';
 				map[i][j]=n;
@@ -59,10 +59,10 @@ public class Map {
 		for(int i=0; i<6;i++) {
 			for(int j=0;j<6;j++) {
 				if(array[i][j]==1) {
-					System.out.print("#");
+					System.out.print("# ");
 				}
 				else {
-					System.out.print(" ");
+					System.out.print("  ");
 				}
 			}
 			System.out.println();
