@@ -15,6 +15,7 @@ public class ConsumerExam {
 			System.out.println(s1 + s2);
 		};
 		concat.accept("Hello", " world!!!");
+		
 		DoubleConsumer inverse = (number) -> {
 			System.out.println("역수: " + 1 / number);
 		};

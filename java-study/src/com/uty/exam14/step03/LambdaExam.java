@@ -8,7 +8,7 @@ public class LambdaExam {
 		};
 		System.out.println(lambda.test(1, 2));
 
-		lambda = (x, y) -> {
+		lambda = (                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       x, y) -> {
 			return x + y;
 		};
 		System.out.println(lambda.test(1, 2));
