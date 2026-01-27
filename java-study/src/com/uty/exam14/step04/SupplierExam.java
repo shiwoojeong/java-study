@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 
 public class SupplierExam {
-	
 
 	public static void main(String[] args) {
 		Supplier<String> lotto = () -> {
@@ -30,13 +29,13 @@ public class SupplierExam {
 					count++;
 				}
 			}
-			
+
 			for (int i = 0; i < numbers.length; i++) {
 				builder.append(numbers[i]).append(" ");
 			}
 
 			return builder.toString().trim(); // 결과 반환
 		};
-		System.out.println(lotto.get()+"]");
+		System.out.println(lotto.get() + "]");
 	}
 }
