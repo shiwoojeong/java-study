@@ -43,12 +43,37 @@ public class MapExam {
 		list.add("Python");
 		list.add("c#");
 		list.add("Objective-c");
-		
+
 		Iterator<String> listIterator = list.iterator();
 		while (listIterator.hasNext()) {
 			String element = listIterator.next();
 			System.out.println(element);
 		}
+
+		map.remove("국어");
+		System.out.println("총 Entry: " + map.size());
+		System.out.println();
+		// ====================================================
+
+		Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
+		Iterator<Map.Entry<String, Integer>> entryIterator = entrySet.iterator();
+
+		while (entryIterator.hasNext()) {
+			Map.Entry<String, Integer> entry = entryIterator.next();
+			String key = entry.getKey();
+			Integer value = entry.getValue();
+			System.out.println(key + ": " + value);
+		}
+		System.out.println();
+
+		for (Map.Entry<String, Integer> entry : entrySet) {
+			String key = entry.getKey();
+			Integer value = entry.getValue();
+			System.out.println(key + ": " + value);
+		}
+		System.out.println();
 		
+		map.clear();
+		System.out.println("총 Entry: " + map.size());
 	}
 }
