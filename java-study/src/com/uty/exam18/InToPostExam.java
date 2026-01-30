@@ -15,12 +15,15 @@ public class InToPostExam {
 //				(1+2)*(3/4)+(5+(6-7)) (1 * 2  + 3 ) / 4
 
 		System.out.println(infixToPostfix(ex1));
+		System.out.println(calculate(infixToPostfix(ex1)));
 		System.out.println();
 		System.out.println(infixToPostfix(ex2));
+		System.out.println(calculate(infixToPostfix(ex2)));
+
 	}
 
 	private static String infixToPostfix(String expression) {
-		
+
 		DLLStack<Character> stack = new DLLStack<Character>();
 		Map<Character, Integer> priority = new HashMap();
 		StringBuilder Postfix = new StringBuilder();
@@ -30,39 +33,155 @@ public class InToPostExam {
 		priority.put('*', 2);
 		priority.put('(', 0);
 
+		String[] parts = expression.trim().split("\\s+");
 
+		for (int i = 0; i < parts.length; i++) {
+			char ch = parts[i].charAt(0);
 
-		for (int i = 0; i < expression.length(); i++) {
-		    char ch = expression.charAt(i);
-		    //공백일 경우 무시
-		    if(ch == ' ')continue;
-		    
-		    if (ch == '(') {
-		        stack.push(ch);
-		    } 
-		    else if (ch == '+' || ch == '-' || ch == '/' || ch == '*') {
-		        // 연산자 우선순위가 높거나 같은 연산자를 만나면 pop연산자 수행
-		        while (!stack.empty() && priority.get(stack.peek()) >= priority.get(ch)) {
-		            Postfix.append(stack.pop());
-		        }
-		        stack.push(ch); // 그다음 나를 push
-		    } 
-		    else if (ch == ')') {
-		        while (!stack.empty() && stack.peek() != '(') {
-		            Postfix.append(stack.pop());
-		        }
-		        if (!stack.empty()) stack.pop(); //  '('를 스택에서 제거 
-		    } 
-		    else { // 숫자인 경우
-		        Postfix.append(ch);
-		    }
+			if (ch == '(') {
+				stack.push(ch);
+			} else if (ch == '+' || ch == '-' || ch == '/' || ch == '*') {
+				while (!stack.empty() && priority.get(stack.peek()) >= priority.get(ch)) {
+					// 연산자를 뽑을 때 뒤에 공백 추가
+					Postfix.append(stack.pop()).append(" ");
+				}
+				stack.push(ch);
+			} else if (ch == ')') {
+				while (!stack.empty() && stack.peek() != '(') {
+					// 괄호 안의 연산자를 뽑을 때 뒤에 공백 추가
+					Postfix.append(stack.pop()).append(" ");
+				}
+				if (!stack.empty())
+					stack.pop();
+			} else {
+				// 피연산자(숫자)를 추가하고 뒤에 공백 추가
+				Postfix.append(parts[i]).append(" ");
+			}
 		}
 
-		//스택이 빌 때까지 돌아갑니다.
 		while (!stack.empty()) {
-		    Postfix.append(stack.pop());
+			// 남은 연산자들을 뽑을 때 뒤에 공백 추가
+			Postfix.append(stack.pop()).append(" ");
 		}
 
-		return Postfix.toString();
+		// 마지막에 남는 불필요한 공백만 제거하여 반환
+		return Postfix.toString().trim();
 	}
+
+	
+	private static int calculate(String infix) {
+		String[] parts = infix.trim().split("\\s+");
+		DLLStack<Integer> stack = new DLLStack<Integer>();
+		for (int i = 0; i < parts.length; i++) {
+			String s = parts[i];
+			int result = 0;
+			if (s.equals("+") || s.equals("-") || s.equals("/") || s.equals("*")) {
+				int x = stack.pop();
+				int y = stack.pop();
+				if (s.equals("+")) {
+					result = y + x;
+				} else if (s.equals("-")) {
+					result = y - x;
+				} else if (s.equals("/")) {
+					result = y / x;
+				} else if (s.equals("*")) {
+					result = y * x;
+				}
+				stack.push(result);
+
+			} else {
+				stack.push(Integer.parseInt(s));
+			}
+
+		}
+
+		return stack.pop();
+	}
+	
+	
+	/////////////////////////////////////////////////////////////////////
+	private static String infixToPostfix2(String expression) {
+		StringBuilder builder = new StringBuilder();
+
+		DLLStack<Character> stack = new DLLStack<Character>();
+		char[] arrayExpression = expression.toCharArray();
+
+		for (int i = 0; i < arrayExpression.length; i++) {
+			if (arrayExpression[i] == '(') {
+				stack.push(arrayExpression[i]);
+			} else if (arrayExpression[i] >= '0' && arrayExpression[i] <= '9') {
+				builder.append(arrayExpression[i]);
+			} else if (arrayExpression[i] == ')') {
+				while (stack.peek() != '(') {
+					builder.append(stack.pop());
+				}
+				stack.pop();
+			} else {
+				if (stack.empty() || stack.peek() == '(') {
+					stack.push(arrayExpression[i]);
+				} else if (comparePriority(arrayExpression[i], stack.peek()) > 0) {
+					stack.push(arrayExpression[i]);
+				} else {
+					while (stack.size() != 0 && stack.peek() != '(') {
+						builder.append(stack.pop());
+					}
+					stack.push(arrayExpression[i]);
+				}
+			}
+		}
+		while (stack.size() != 0) {
+			builder.append(stack.pop());
+		}
+		return builder.toString();
+	}
+
+	private static int comparePriority(char a, char b) {
+		if (a == '*' || a == '/') {
+			if (b == '*' || b == '/') {
+				return 0;
+			} else {
+				return 1;
+			}
+		} else {
+			if (b == '*' || b == '/') {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
+	}
+	private static int calculate2(String infix) {
+	DLLStack<Integer> intStack = new DLLStack<Integer>();
+	char[] postfixExpression = infix.toCharArray();
+	int a, b;
+	
+	for(int i=0; i < postfixExpression.length; i++) {
+		switch(postfixExpression[i]) {
+		case '*':
+			b = intStack.pop();
+			a = intStack.pop();
+			intStack.push(a*b);
+			break;
+		case '/':
+			b = intStack.pop();
+			a = intStack.pop();
+			intStack.push(a/b);
+			break;
+		case '+':
+			b = intStack.pop();
+			a = intStack.pop();
+			intStack.push(a+b);
+			break;
+		case '-':
+			b = intStack.pop();
+			a = intStack.pop();
+			intStack.push(a-b);
+			break;
+		default:
+			intStack.push(Character.digit(postfixExpression[i], 10));
+		}
+	}
+	return intStack.pop();
+	}
+
 }
